@@ -32,11 +32,29 @@ class Solution:
             #return type: boolean
             
             #TODO: Write code below to returnn a boolean value with the solution to the prompt.
-            if parenthesis.count("}") == parenthesis.count("{"):
-                 if parenthesis.count("[") == parenthesis.count("]"):
-                      if parenthesis.count("(") == parenthesis.count(")"):
-                           return True
-            return False 
+            # starting = ""
+            # ending = ""
+            # for ch in parenthesis:
+            #     if ch in ("{", "[", "("):
+            #         starting += ch
+            #     else:
+            #          ending += ch
+
+            # return starting == ending[::-1]
+            map = {"{" : "}", "[" : "]", "(" : ")"}
+            for key, value in map.items():
+                key_count = 0
+                val_count = 0
+                for ch in parenthesis:
+                    if ch == key:
+                        key_count += 1
+                    if ch == value:
+                        val_count += 1
+                if key_count != val_count:
+                    return False
+                
+            return True
+
 
 def main():
     str1=input()
